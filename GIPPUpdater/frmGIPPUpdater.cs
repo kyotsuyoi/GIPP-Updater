@@ -24,6 +24,7 @@ namespace frmGIPPUpdater
         private void frmGIPPUpdater_Load(object sender, EventArgs e)
         {
             this.Focus();
+            btnUpdate.Enabled = false;
             try
             {   // Abrir o arquivo para ler.
                 using (StreamReader sr = new StreamReader(@"C:\Program Files (x86)\GIPP\path"))
@@ -109,6 +110,7 @@ namespace frmGIPPUpdater
 
         public void ThreadProcess()
         {
+            this.btnUpdate.BeginInvoke((MethodInvoker)delegate () { btnUpdate.Enabled = false; });
             try
             {
 
@@ -139,8 +141,11 @@ namespace frmGIPPUpdater
             {
                 MessageBox.Show(ex.Message, "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.lblFiles.BeginInvoke((MethodInvoker)delegate () { this.lblFiles.Text = "A atualização falhou!"; });
+                this.btnUpdate.BeginInvoke((MethodInvoker)delegate () { btnUpdate.Enabled = true; });
             }
             this.lblFiles.BeginInvoke((MethodInvoker)delegate () { this.Close(); });
+
+            
         }
     }
 }
