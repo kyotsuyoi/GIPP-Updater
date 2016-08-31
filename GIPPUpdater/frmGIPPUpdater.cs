@@ -148,7 +148,6 @@ namespace frmGIPPUpdater
             }
             // Desativa a Trhead principal.
             this.lblFiles.BeginInvoke((MethodInvoker)delegate () { this.Close(); });
-
             
         }
     }
