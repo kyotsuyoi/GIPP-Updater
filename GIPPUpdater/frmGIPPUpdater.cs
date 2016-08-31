@@ -62,7 +62,7 @@ namespace frmGIPPUpdater
                 if (!dir.Exists)
                 {
                     throw new DirectoryNotFoundException(
-                        "Source directory does not exist or could not be found: "
+                        "O diretório não existe ou não pode ser encontrado: "
                         + sourceDirName);
                 }
 
